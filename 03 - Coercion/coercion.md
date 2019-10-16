@@ -1,6 +1,6 @@
 # Coercion
 
-Now we have got familiar with *types* is Javacript, let us consider that JavaScript is not a *typed* language. This means JavaScript is, let's say, *unique* in how it interprets variables and evaluates conditions.
+Now we have got familiar with *types* is JavaScript, let us consider that JavaScript is not a *typed* language. This means JavaScript is, let's say, *unique* in how it interprets variables and evaluates conditions.
 
 The expressive, flexible nature of JavaScript without the need to *specify* types of variables, comes with the caveat that we have to be more cautious when evaluating variables to avoid unexpected results as we'll see. Let's look at *Coercion*.
 
