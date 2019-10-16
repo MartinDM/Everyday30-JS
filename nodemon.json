@@ -1,0 +1,4 @@
+{
+  "watch": ["pages", "assets", "src"],
+  "ext": "css, js, md, html"
+}

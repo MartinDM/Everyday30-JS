@@ -35,11 +35,14 @@ But what about this...
 Without using the console yet, what would we expect here?  
 `5 + 5 + '5'`  
 
-> **Solution**  
-> *Answer:* 105.  
-> The compiler will carry out the first operation, which is (5+5), then coerce that to a String, and concatenate it to the `'5'`, resulting in `105`.
->
->We're having fun  🚀
+
+::: spoiler Solution
+Yep, it's: `'105'`
+
+The compiler will carry out the first operation, which is `(5 + 5)`, then coerce that as String (`'10'`), and concatenate it to the `'5'`, resulting in `'105'`.  
+
+We're having fun  🚀
+:::
 
 But with a minus, it's different. What might you expect from typing this into the console?:
 `'5' - 5`
@@ -67,7 +70,7 @@ When checking strings and numbers we can use JavaScripts' 'built-in' method `typ
 > You may notice we're using single quotes for strings. In JavaScript, either single or double quotes are valid, although single tends to be more popular. In projects, it's more important to pick one and keep it consistant.  
 > 
 > Single quotes allow you to store double quotes in HTML strings without ecaping them, so might be more convenient:  
-`var HtmlString = '<div class="content">...</div>'`
+> `var HtmlString = '<div class="content">...</div>'`
 
 Let's create some variables.  
 Type these into your console of choice:  
@@ -86,24 +89,27 @@ And then check their type:
 >Remember you'll need to write these as `console.log(typeof name)` to read their output if not writing directly to the console in your browser.
 
 So one way to add some *strictness* to our logic is to enforce type equality using the triple-equals `===` operator:  
-````
+```javascript
 if (age === 35) {
    console.log('We know age is definitely a number!');
 }
-````
+```
+
 > Notice the `===` we saw in a previous section. This ensures we're checking for a number. A string of "35" would return false.
 
 In most cases, using loose equality (`==`) is discouraged. The result of a comparison using *strict* equality (`===`) is easier to predict as there's no room for type coercion to change the outcome.
 
-# Booleans and coercion
+## Coercion and Booleans
 
 One other thing to note is that numbers `0` or `1` can be evaluated as booleans in JavaScript, for example `1` can evaluate as `true`.
-```
+
+```javascript
 const pass = 1;
 if (pass) {
   console.log('Passed!')
 }
 ```
+
 We can verify this by running these and seeing how the boolean is evaluated as `0` or `1`:  
 `5 + true` // 6  
 `5 + false` // 5

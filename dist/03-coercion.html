@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/assets/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/tomorrow.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/languages/javascript.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <title>Everyday 30 - JavaScript</title>
+</head><h1>Coercion</h1>
+<p>Now we have got familiar with <em>types</em> is JavaScript, let us consider that JavaScript is not a <em>typed</em> language. This means JavaScript is, let's say, <em>unique</em> in how it interprets variables and evaluates conditions.</p>
+<p>The expressive, flexible nature of JavaScript without the need to <em>specify</em> types of variables, comes with the caveat that we have to be more cautious when evaluating variables to avoid unexpected results as we'll see. Let's look at <em>Coercion</em>.</p>
+<p>This is when the compiler will try to be 'smart' about interpreting variables, the logic behind which we should at least be familiar with to ensure we understand <em>how</em> our logic is evaluated to give the results we expect.</p>
+<p><em>Corcion</em> has a bad reputation, but it pays off to really learn and understand it so we can be confident in checking for values in our code, not to mention understanding what's going on <em>under the hood</em>!</p>
+<blockquote>
+<p>Anything we don't learn is indistinguishable from magic - Arthur C Clarke</p>
+</blockquote>
+<p>Here's how we might evaluate an expression in Python; a <em>typed</em> langauge:</p>
+<p><code>'The year is ' + 2019</code></p>
+<p>Results in:<br>
+<code>TypeError: can only concatenate str (not &quot;int&quot;) to str </code></p>
+<p>Of course it would error, as we cannot add a string to a number.</p>
+<p>Now in JavaScript, the Number is <em>coerced</em> to a String.</p>
+<blockquote>
+<p>Try typing some of these directly into your browsers' console...</p>
+</blockquote>
+<p><code>'The year is ' + 2019</code></p>
+<p>...which results in concatenation:<br>
+<code>&quot;The year is 2019&quot;</code></p>
+<p><strong>Similarly:</strong><br>
+<code>5 + '5'</code><br>
+returns <code>55</code> as the compiler will <em>coerce</em> the Number 5 into a string in order to <em>concatenate</em> them as <code>'55'</code></p>
+<p>But what about this...<br>
+Without using the console yet, what would we expect here?<br>
+<code>5 + 5 + '5'</code></p>
+<details><summary>Solution</summary>
+<p>Yep, it's: <code>'105'</code></p>
+<p>The compiler will carry out the first operation, which is <code>(5 + 5)</code>, then coerce that as String (<code>'10'</code>), and concatenate it to the <code>'5'</code>, resulting in <code>'105'</code>.</p>
+<p>We're having fun  🚀</p>
+</details>
+<p>But with a minus, it's different. What might you expect from typing this into the console?:
+<code>'5' - 5</code></p>
+<p>Yep, Number <code>0</code>.<br>
+That's because the String 5 is <em>coerced</em> to a Number in order for the <code>-</code> operator to be applied.</p>
+<p>This is Type Corcion and it is intentional and follows expected rules.</p>
+<h2>Typed</h2>
+<p>Part of what makes JavaScript so expressive (and so accessible!) is its <em>dynamically-typed</em> nature, as opposed to <em>typed</em> like Python or Java.</p>
+<p>This means developers are free to mix and match types, reassigning them to variables, and using them to determine control flow without at any point needing to <em>specify</em> what the type of a variable should be (either when creating it or checking it).</p>
+<p>The key point here is that this can generate errors; and not the easy-to-spot syntax ones but as logical bugs if we don't account for type coercion when evaluating variables.</p>
+<h2>Type checking with <code>typeof</code></h2>
+<p>So how to add in such a check on the actual <em>type</em> of a variable?  Fortunately, we can guard againast anything unexpected by coding defensively.</p>
+<p>When checking strings and numbers we can use JavaScripts' 'built-in' method <code>typeof</code> to check the type of a given variable.</p>
+<blockquote>
+<p><strong>Tip:</strong><br>
+You may notice we're using single quotes for strings. In JavaScript, either single or double quotes are valid, although single tends to be more popular. In projects, it's more important to pick one and keep it consistant.</p>
+<p>Single quotes allow you to store double quotes in HTML strings without ecaping them, so might be more convenient:<br>
+<code>var HtmlString = '&lt;div class=&quot;content&quot;&gt;...&lt;/div&gt;'</code></p>
+</blockquote>
+<p>Let's create some variables.<br>
+Type these into your console of choice:<br>
+<code>const age = 30</code><br>
+<code>const year = &quot;2019&quot;</code><br>
+<code>const name = 'Alex'</code></p>
+<p>And then check their type:<br>
+<code>typeof age</code><br>
+...which should return 'number', and<br>
+<code>typeof name</code><br>
+...which should return 'string'
+<code>typeof year</code><br>
+...which should return 'string'</p>
+<blockquote>
+<p>Remember you'll need to write these as <code>console.log(typeof name)</code> to read their output if not writing directly to the console in your browser.</p>
+</blockquote>
+<p>So one way to add some <em>strictness</em> to our logic is to enforce type equality using the triple-equals <code>===</code> operator:</p>
+<pre><code class="language-javascript">if (age === 35) {
+   console.log('We know age is definitely a number!');
+}
+</code></pre>
+<blockquote>
+<p>Notice the <code>===</code> we saw in a previous section. This ensures we're checking for a number. A string of &quot;35&quot; would return false.</p>
+</blockquote>
+<p>In most cases, using loose equality (<code>==</code>) is discouraged. The result of a comparison using <em>strict</em> equality (<code>===</code>) is easier to predict as there's no room for type coercion to change the outcome.</p>
+<h2>Coercion and Booleans</h2>
+<p>One other thing to note is that numbers <code>0</code> or <code>1</code> can be evaluated as booleans in JavaScript, for example <code>1</code> can evaluate as <code>true</code>.</p>
+<pre><code class="language-javascript">const pass = 1;
+if (pass) {
+  console.log('Passed!')
+}
+</code></pre>
+<p>We can verify this by running these and seeing how the boolean is evaluated as <code>0</code> or <code>1</code>:<br>
+<code>5 + true</code> // 6<br>
+<code>5 + false</code> // 5</p>
+<h2>Truthy and Falsy</h2>
+<p>Finally, let's look at <em>Truthy</em> and <em>Falsy</em> values.</p>
+<blockquote>
+<p>a truthy value is a value that translates to true when evaluated in a Boolean context - <a href="https://developer.mozilla.org/en-US/docs/Glossary/Truthy">MDN</a></p>
+</blockquote>
+<p>It's often joked that JavaScript has some quirks, particularly when considering what makes a truthy value! But understanding which values constitute each in JavaScript is helpful when evaluating them and knowing what to expect given. Here are some common examples of each.</p>
+<p><strong>falsy</strong> values meaning they will evaluate <code>false</code>:</p>
+<ul>
+<li>false</li>
+<li><code>0</code></li>
+<li>'0'</li>
+<li>'' (empty string)</li>
+<li>null</li>
+<li>undefined</li>
+</ul>
+<p><strong>truthy</strong> values, meaning they will evaluate <code>true</code>:</p>
+<ul>
+<li>true</li>
+<li>'0'</li>
+<li><code>1</code></li>
+<li>' ' (any token, including space in a string)</li>
+<li>{} (empty object)</li>
+<li>[] (empty array)</li>
+</ul>
+<h2>Resources on Types and Cocercion</h2>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness">MDN - Equality comparisons and sameness
+</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Glossary/Truthy">MDN - Truthy values</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Glossary/Falsy">MDN - Falsy values</a></li>
+<li><a href="https://www.youtube.com/watch?v=WoL4BfSv7pI">Teacher Kyle Simpson on JavaScript's reputation and development</a></li>
+</ul>
+<footer class="footer">
+  <div class="container">
+    <p>We want to know what you think to this learning format and how we can make it better.</p>
+      <p>If you have any feedback please let us know through the Everyday 30 Teams channel 💪</p>
+  </div>
+</footer>

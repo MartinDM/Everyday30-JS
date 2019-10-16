@@ -1,0 +1,116 @@
+* {
+  font-family: sans-serif;
+  color: #333
+}
+body {
+  padding: 20px;
+  max-width: 800px;
+  margin: auto;
+}
+
+p {
+  line-height:2em;
+}
+
+a {
+  text-decoration: none;
+  color: #3273dc;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+li {
+  line-height: 2em;
+}
+
+ul > li {
+  font-size: 1em;
+  padding:5px;
+  list-style: none; /* Remove default bullets */
+}
+
+ul li::before {
+  content: "\2022";  /* Add content: \2022 is the CSS Code/unicode for a bullet */
+  color: #3273dc; /* Change the color */
+  font-weight: bold; /* If you want it to be bold */
+  display: inline-block; /* Needed to add space between the bullet and the text */ 
+  width: 1em; /* Also needed for space (tweak if needed) */
+  margin-left: -1em; /* Also needed for space (tweak if needed) */
+}
+
+img {
+  width:100%;
+  box-sizing:border-box;
+}
+
+blockquote {
+  border-left: 5px solid #999;
+  color: #999;
+  padding-left: 10px;
+  font-style: italic;
+}
+
+code {
+  background-color: #282c34;
+  color:white;
+  padding: 2px 5px;
+}
+
+details {
+  margin: 20px 0px;
+  border: 1px solid #282c28;
+  border-radius: 10px;
+  transition-duration: 1s;
+}
+
+details > summary {
+  padding: 20px;
+}
+details > * {
+  padding: 5px 20px;
+}
+
+.logo {
+  padding: 30px 200px;
+}
+
+footer {
+  background-color: #282c28;
+  width: calc(100vw - 40px);
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-top:40px;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  padding:20px;
+  box-shadow: #282c28 0px 100px;
+}
+
+footer > p {
+  color:white;
+}
+
+table {
+  border: 1px solid #c6cbd1;
+  width: 100%;
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+table > thead > tr > th {
+  padding: 6px 13px;
+}
+
+table th, table td {
+  border: 1px solid #c6cbd1;
+  margin:0px;
+  padding: 6px 13px;
+  line-height: 1.5em;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f6f8fa;
+}

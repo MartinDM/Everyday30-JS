@@ -1,0 +1,142 @@
+* {
+  font-family: sans-serif;
+}
+body {
+  padding: 20px;
+  max-width: 800px;
+  margin: auto;
+  color: #333;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.footer {
+  color: #f0dc4f;
+}
+
+p {
+  margin-bottom: 1em;
+}
+
+p:not(:last-child) {
+  line-height: 1.8em;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: #3273dc;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+li {
+  line-height: 2em;
+}
+
+ul > li {
+  font-size: 1em;
+  list-style: none;
+}
+
+ul li::before {
+  content: "\2022";  /* Add content: \2022 is the CSS Code/unicode for a bullet */
+  color: #3273dc; /* Change the color */
+  font-weight: bold; /* If you want it to be bold */
+  display: inline-block; /* Needed to add space between the bullet and the text */ 
+  width: 1em; /* Also needed for space (tweak if needed) */
+  margin-left: -1em; /* Also needed for space (tweak if needed) */
+}
+
+img {
+  box-sizing:border-box;
+}
+
+blockquote {
+  border-left: 5px solid #999;
+  color: #999;
+  padding-left: 10px;
+  font-style: italic;
+}
+
+code {
+  background-color: #ece9f3;
+  color:#4a4a4a;
+  padding: 4px 5px;
+}
+
+details {
+  margin: 20px 0px;
+  padding: 20px;
+  border: 4px dashed #ece9f3;
+  border-radius: 10px;
+  transition-duration: 1s;
+}
+
+details > summary {
+  padding-left: 0px;
+  cursor: pointer;
+}
+details > * {
+  padding: 5px 20px;
+}
+
+h1 {
+  background: #f7f7f7;
+  padding: 20px;
+  border-bottom: 3px solid #ffe73b;
+  letter-spacing: -1px;
+  font-style: italic;
+}
+
+.header {
+  text-style: italic
+}
+
+.logo {
+  max-width: 400px;
+  display: block;
+  margin: 0 auto;
+}
+
+footer {
+  background-color: #282c28;
+  width: calc(100vw - 40px);
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-top:40px;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  padding:20px;
+  box-shadow: #282c28 0px 100px;
+}
+
+
+table {
+  border: 1px solid #c6cbd1;
+  width: 100%;
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+table > thead > tr > th {
+  padding: 6px 13px;
+}
+
+table th, table td {
+  border: 1px solid #c6cbd1;
+  margin:0px;
+  padding: 6px 13px;
+  line-height: 1.5em;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f6f8fa;
+}
