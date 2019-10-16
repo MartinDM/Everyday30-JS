@@ -8,5 +8,5 @@ This is a introduction to JavaScript
 
 ### Lessons
 
-1. [Intro and Setup](0-intro.html)
+1. [Intro and Setup](01-intro.html)
 2. [Coercion](03-coercion.html)

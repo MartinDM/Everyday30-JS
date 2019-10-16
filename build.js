@@ -38,7 +38,7 @@ function compilePage(route) {
     log(`Building page ${route}`)
     readFile(`pages/${route}`, (err, data) => {
         if (err) { error(err) }
-        const html = md.render(data.toString())
+        const html = md.render(data.toString());
         writeFile(`dist/${route.split('.')[0]}.html`, header + html + footer, (err) => {
             if (err) { error(err); return }
             log(`${route} page compiled`)
